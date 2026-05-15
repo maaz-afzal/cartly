@@ -88,6 +88,7 @@ const Home = () => {
         ).map((product, index) => (
           <ProductCard
             key={index}
+            id={product.id}
             title={product.title}
             price={product.price}
             image={product.image}
