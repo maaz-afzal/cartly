@@ -1,4 +1,5 @@
 import Button from "../components/ui/Button";
+import ProductCard from "../components/ui/ProductCard";
 
 const Home = () => {
   return (
@@ -28,6 +29,38 @@ const Home = () => {
         <Button label="Jewelery" isActive={false} />
         <Button label=" Men Clothing" isActive={false} />
         <Button label="Women Clothing" isActive={false} />
+      </section>
+
+      {/* Product section */}
+      <section className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+        <ProductCard
+          title={"Beauty"}
+          description={"This is the fake description"}
+          price={100}
+          category={"Beauty"}
+          image={""}
+        />
+        <ProductCard
+          title={"Beauty"}
+          description={"This is the fake description"}
+          price={100}
+          category={"Beauty"}
+          image={""}
+        />
+        <ProductCard
+          title={"Beauty"}
+          description={"This is the fake description"}
+          price={100}
+          category={"Beauty"}
+          image={""}
+        />
+        <ProductCard
+          title={"Beauty"}
+          description={"This is the fake description"}
+          price={100}
+          category={"Beauty"}
+          image={""}
+        />
       </section>
     </div>
   );
