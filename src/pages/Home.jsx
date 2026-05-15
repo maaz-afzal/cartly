@@ -1,41 +1,18 @@
 import Button from "../components/ui/Button";
 import ProductCard from "../components/ui/ProductCard";
+import useFetch from "../hooks/useFetch";
 
 const Home = () => {
-  const products = [
-    {
-      title: "Beauty",
-      description: "This is the fake description",
-      price: 100,
-      category: "Beauty",
-      image:
-        "https://i1-e.pinimg.com/1200x/30/ad/f2/30adf29846915cad2d809189e3affa3f.jpg",
-    },
-    {
-      title: "Beauty",
-      description: "This is the fake description",
-      price: 100,
-      category: "Beauty",
-      image:
-        "https://i1-e.pinimg.com/1200x/30/ad/f2/30adf29846915cad2d809189e3affa3f.jpg",
-    },
-    {
-      title: "Beauty",
-      description: "This is the fake description",
-      price: 100,
-      category: "Beauty",
-      image:
-        "https://i1-e.pinimg.com/1200x/30/ad/f2/30adf29846915cad2d809189e3affa3f.jpg",
-    },
-    {
-      title: "Beauty",
-      description: "This is the fake description",
-      price: 100,
-      category: "Beauty",
-      image:
-        "https://i1-e.pinimg.com/1200x/30/ad/f2/30adf29846915cad2d809189e3affa3f.jpg",
-    },
-  ];
+  const { data, loading, error } = useFetch(
+    "https://fakestoreapi.com/products",
+  );
+
+  if (loading)
+    return <div className="w-full max-w-6xl mx-auto mt-8 px-4">Loading...</div>;
+
+  if (error)
+    return <div className="w-full max-w-6xl mx-auto mt-8 px-4">{error}</div>;
+
   return (
     <div className="w-full max-w-6xl mx-auto mt-8 px-4">
       {/* Hero section */}
@@ -70,7 +47,7 @@ const Home = () => {
 
       {/* Product section */}
       <section className="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-        {products.map((product, index) => {
+        {data.map((product, index) => {
           return (
             <ProductCard
               key={index}
