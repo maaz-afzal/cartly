@@ -1,3 +1,5 @@
+import Button from "../components/ui/Button";
+
 const Home = () => {
   return (
     <div className="w-full max-w-6xl mx-auto mt-8 px-4">
@@ -17,6 +19,15 @@ const Home = () => {
             Shop Now
           </button>
         </div>
+      </section>
+
+      {/* Filter Section */}
+      <section className="mt-8 flex flex-wrap justify-end items-center gap-2">
+        <Button label="All" isActive={true} />
+        <Button label="Electronics" isActive={false} />
+        <Button label="Jewelery" isActive={false} />
+        <Button label=" Men Clothing" isActive={false} />
+        <Button label="Women Clothing" isActive={false} />
       </section>
     </div>
   );
