@@ -1,16 +1,19 @@
 import { Heart, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 const ProductCard = ({ title, price, image, description, category, id }) => {
+  const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const handleProductClick = () => {
     navigate(`/product/${id}`);
   };
-
+  
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    console.log("Add to cart");
+    addToCart({ id, title, price, image, category }, 1);
   };
 
   const handleFavorite = (e) => {

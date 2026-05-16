@@ -10,26 +10,19 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
+  const { addToCart } = useContext(CartContext);
+
   const { data, loading, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`,
   );
-
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
 
   if (loading) {
     return (
@@ -92,29 +85,11 @@ const ProductDetail = () => {
             <p className="text-gray-600 leading-relaxed">{data.description}</p>
           </div>
 
-          <div className="flex items-center gap-4 pt-2">
-            <span className="text-sm font-medium text-gray-700">Quantity:</span>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={decreaseQuantity}
-                className="w-8 h-8 rounded-full border border-gray-300 hover:border-gray-900 hover:bg-gray-50 transition flex items-center justify-center"
-              >
-                <Minus size={14} />
-              </button>
-              <span className="w-8 text-center font-medium text-gray-900">
-                {quantity}
-              </span>
-              <button
-                onClick={increaseQuantity}
-                className="w-8 h-8 rounded-full border border-gray-300 hover:border-gray-900 hover:bg-gray-50 transition flex items-center justify-center"
-              >
-                <Plus size={14} />
-              </button>
-            </div>
-          </div>
-
           <div className="flex gap-4 pt-4">
-            <button className="flex-1 bg-gray-900 text-white py-3 rounded-full font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2">
+            <button
+              className="flex-1 bg-gray-900 text-white py-3 rounded-full font-medium hover:bg-gray-800 transition flex items-center justify-center gap-2"
+              onClick={() => addToCart(data, quantity)}
+            >
               <ShoppingBag size={20} />
               Add to Cart
             </button>

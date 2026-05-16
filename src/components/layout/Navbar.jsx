@@ -1,8 +1,14 @@
 import { Heart, Search, ShoppingBag, Sun } from "lucide-react";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const { getTotalItems } = useContext(CartContext);
+  const navigate = useNavigate();
+  const itemCount = getTotalItems();
   return (
-    <header className="w-full bg-white">
+    <header className="w-full bg-white sticky top-0 z-100">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex justify-between items-center py-5 w-full">
           <div>
@@ -28,11 +34,17 @@ const Navbar = () => {
               <Heart size={20} />
             </div>
             <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-200">
-              <ShoppingBag size={20} className="cursor-pointer" />
+              <ShoppingBag
+                size={20}
+                className="cursor-pointer"
+                onClick={() => navigate("/cart")}
+              />
 
-              <span className="absolute -top-3 -right-2 bg-red-500 text-white rounded-full px-1.5 text-[10px] leading-none min-w-4 h-4 flex items-center justify-center">
-                0
-              </span>
+              {itemCount > 0 && (
+                <span className="absolute -top-3 -right-2 bg-red-500 text-white rounded-full px-1.5 text-[10px] leading-none min-w-4 h-4 flex items-center justify-center">
+                  {itemCount > 99 ? "99+" : itemCount}
+                </span>
+              )}
             </div>
             <div className="p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250">
               <Sun size={20} className="cursor-pointer" />
