@@ -10,7 +10,7 @@ const ProductCard = ({ title, price, image, description, category, id }) => {
   const handleProductClick = () => {
     navigate(`/product/${id}`);
   };
-  
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
     addToCart({ id, title, price, image, category }, 1);

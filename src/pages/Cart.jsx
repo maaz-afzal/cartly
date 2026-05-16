@@ -40,7 +40,6 @@ const Cart = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {/* Back Button */}
       <button
         onClick={() => navigate("/")}
         className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
@@ -52,14 +51,12 @@ const Cart = () => {
       <h1 className="text-2xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Cart Items - Left Side (2/3 width on desktop) */}
         <div className="lg:col-span-2 space-y-4">
           {cart.map((item) => (
             <div
               key={item.id}
               className="flex gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:shadow-md transition"
             >
-              {/* Product Image */}
               <div className="w-24 h-24 bg-gray-50 rounded-lg p-2 shrink-0">
                 <img
                   src={item.image}
@@ -68,7 +65,6 @@ const Cart = () => {
                 />
               </div>
 
-              {/* Product Details */}
               <div className="flex-1">
                 <div className="flex justify-between items-start">
                   <div>
@@ -88,7 +84,6 @@ const Cart = () => {
                 </div>
 
                 <div className="flex justify-between items-center mt-4">
-                  {/* Price */}
                   <div>
                     <span className="text-gray-400 text-sm">Price</span>
                     <p className="font-bold text-gray-900">
@@ -96,7 +91,6 @@ const Cart = () => {
                     </p>
                   </div>
 
-                  {/* Quantity Selector */}
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -115,7 +109,6 @@ const Cart = () => {
                     </button>
                   </div>
 
-                  {/* Total */}
                   <div>
                     <span className="text-gray-400 text-sm">Total</span>
                     <p className="font-bold text-gray-900">
@@ -128,7 +121,6 @@ const Cart = () => {
           ))}
         </div>
 
-        {/* Order Summary - Right Side (1/3 width on desktop) */}
         <div className="lg:col-span-1">
           <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
             <h2 className="text-lg font-bold text-gray-900 mb-4">
