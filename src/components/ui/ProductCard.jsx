@@ -2,9 +2,11 @@ import { Heart, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
+import { FavoritesContext } from "../../context/FavoritesContext";
 
 const ProductCard = ({ title, price, image, description, category, id }) => {
   const { addToCart } = useContext(CartContext);
+  const { addToFavorite } = useContext(FavoritesContext);
   const navigate = useNavigate();
 
   const handleProductClick = () => {
@@ -18,7 +20,7 @@ const ProductCard = ({ title, price, image, description, category, id }) => {
 
   const handleFavorite = (e) => {
     e.stopPropagation();
-    console.log("Add to wishlist");
+    addToFavorite({ title, price, image, description, category, id });
   };
 
   return (

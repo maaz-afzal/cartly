@@ -12,13 +12,14 @@ import {
 } from "lucide-react";
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-
   const { addToCart } = useContext(CartContext);
+  const { addToFavorite } = useContext(FavoritesContext);
 
   const { data, loading, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`,
@@ -93,7 +94,10 @@ const ProductDetail = () => {
               <ShoppingBag size={20} />
               Add to Cart
             </button>
-            <button className="p-3 border border-gray-300 rounded-full hover:border-red-500 hover:text-red-500 transition">
+            <button
+              className="p-3 border border-gray-300 rounded-full hover:border-red-500 hover:text-red-500 transition"
+              onClick={() => addToFavorite(data)}
+            >
               <Heart size={20} />
             </button>
           </div>

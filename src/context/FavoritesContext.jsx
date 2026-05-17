@@ -19,27 +19,27 @@ const FavoritesProvider = ({ children }) => {
   const addToFavorite = (product) => {
     const existingFavorite = favorites.find((item) => item.id === product.id);
 
-    let newFavorite;
+    let newFavorites;
 
     if (existingFavorite) {
-      newFavorite = favorites.filter((item) => item.id !== product.id);
+      newFavorites = favorites.filter((item) => item.id !== product.id);
     } else {
-      newFavorite = {
+      const newItem = {
         id: product.id,
         title: product.title,
         price: product.price,
         image: product.image,
         category: product.category,
       };
-      newFavorite = [...favorites, newFavorite];
+      newFavorites = [...favorites, newItem];
     }
 
-    setFavorites(newFavorite);
+    setFavorites(newFavorites);
   };
 
   const removeFromFavorite = (id) => {
-    const newFavorite = favorites.filter((favorite) => favorite.id !== id);
-    setFavorites(newFavorite);
+    const newFavorites = favorites.filter((favorite) => favorite.id !== id);
+    setFavorites(newFavorites);
   };
 
   const clearFavorites = () => {
@@ -55,4 +55,4 @@ const FavoritesProvider = ({ children }) => {
   );
 };
 
-export default FavoriteProvider;
+export default FavoritesProvider;
