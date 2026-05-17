@@ -13,11 +13,11 @@ const Navbar = () => {
   const itemCount = getTotalItems();
   const favoriteCount = favorites.length;
   return (
-    <header className="w-full bg-white sticky top-0 z-100">
+    <header className="w-full bg-white sticky top-0 z-100 dark:bg-gray-800 dark:text-white shadow-sm">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex justify-between items-center py-5 w-full">
           <div>
-            <span className="text-2xl font-bold font-serif tracking-widest">
+            <span className="text-2xl font-bold font-serif tracking-widest dark:text-white">
               CARTLY
             </span>
           </div>
@@ -25,20 +25,20 @@ const Navbar = () => {
           <div className="flex items-center gap-5">
             <div className="relative w-90">
               <Search
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
                 size={18}
               />
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full rounded-full border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm outline-none transition-all duration-200 focus:border-[#F0803C] focus:ring-2 focus:ring-[#F0803C]/30 placeholder:text-gray-400"
+                className="w-full rounded-full border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm outline-none transition-all duration-200 focus:border-[#F0803C] focus:ring-2 focus:ring-[#F0803C]/30 placeholder:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-400"
               />
             </div>
 
-            <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250">
+            <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250 dark:hover:bg-gray-700">
               <Heart
                 size={20}
-                className={`cursor-pointer transition ${favoriteCount > 0 ? "fill-red-500 text-red-500" : "text-gray-700"}`}
+                className={`cursor-pointer transition ${favoriteCount > 0 ? "fill-red-500 text-red-500" : "text-gray-700 dark:text-gray-300"}`}
                 onClick={() => navigate("/favorites")}
               />
 
@@ -48,10 +48,10 @@ const Navbar = () => {
                 </span>
               )}
             </div>
-            <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-200">
+            <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-200 dark:hover:bg-gray-700">
               <ShoppingBag
                 size={20}
-                className="cursor-pointer"
+                className="cursor-pointer dark:text-gray-300"
                 onClick={() => navigate("/cart")}
               />
 
@@ -62,7 +62,7 @@ const Navbar = () => {
               )}
             </div>
             <div
-              className="p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250"
+              className="p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250 dark:hover:bg-gray-700"
               onClick={() => toggleTheme()}
             >
               {theme === "light" ? <Sun size={20} /> : <Moon size={20} />}
