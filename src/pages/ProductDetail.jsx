@@ -19,7 +19,10 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
-  const { addToFavorite } = useContext(FavoritesContext);
+  const { favorites, addToFavorite } = useContext(FavoritesContext);
+
+  // Check if this product is in favorites
+  const isFavorite = favorites.some((item) => item.id === parseInt(id));
 
   const { data, loading, error } = useFetch(
     `https://fakestoreapi.com/products/${id}`,
@@ -45,6 +48,16 @@ const ProductDetail = () => {
   }
 
   if (!data) return null;
+
+  const handleFavoriteClick = () => {
+    addToFavorite({
+      id: data.id,
+      title: data.title,
+      price: data.price,
+      image: data.image,
+      category: data.category,
+    });
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -96,9 +109,12 @@ const ProductDetail = () => {
             </button>
             <button
               className="p-3 border border-gray-300 rounded-full hover:border-red-500 hover:text-red-500 transition"
-              onClick={() => addToFavorite(data)}
+              onClick={handleFavoriteClick}
             >
-              <Heart size={20} />
+              <Heart
+                size={20}
+                className={`transition ${isFavorite ? "fill-red-500 text-red-500" : "text-gray-600"}`}
+              />
             </button>
           </div>
 

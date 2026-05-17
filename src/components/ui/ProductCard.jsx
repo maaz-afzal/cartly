@@ -6,8 +6,9 @@ import { FavoritesContext } from "../../context/FavoritesContext";
 
 const ProductCard = ({ title, price, image, description, category, id }) => {
   const { addToCart } = useContext(CartContext);
-  const { addToFavorite } = useContext(FavoritesContext);
+  const { favorites, addToFavorite } = useContext(FavoritesContext);
   const navigate = useNavigate();
+  const isFavorite = favorites.some((item) => item.id === id);
 
   const handleProductClick = () => {
     navigate(`/product/${id}`);
@@ -37,10 +38,13 @@ const ProductCard = ({ title, price, image, description, category, id }) => {
 
         <button
           aria-label="Add to wishlist"
-          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-sm ring-1 ring-gray-200 transition-all hover:bg-red-50 hover:text-red-500 hover:scale-110 active:scale-95"
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-sm ring-1 ring-gray-200 transition-all hover:bg-red-50 hover:scale-110 active:scale-95"
           onClick={handleFavorite}
         >
-          <Heart size={18} className="text-gray-600" />
+          <Heart
+            size={18}
+            className={`transition ${isFavorite ? "fill-red-500 text-red-500" : "text-gray-600"}`}
+          />
         </button>
 
         <img

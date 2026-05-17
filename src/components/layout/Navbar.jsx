@@ -1,12 +1,15 @@
 import { Heart, Search, ShoppingBag, Sun } from "lucide-react";
 import { CartContext } from "../../context/CartContext";
+import { FavoritesContext } from "../../context/FavoritesContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { getTotalItems } = useContext(CartContext);
+  const { favorites } = useContext(FavoritesContext);
   const navigate = useNavigate();
   const itemCount = getTotalItems();
+  const favoriteCount = favorites.length;
   return (
     <header className="w-full bg-white sticky top-0 z-100">
       <div className="mx-auto max-w-6xl px-4">
@@ -30,8 +33,18 @@ const Navbar = () => {
               />
             </div>
 
-            <div className="p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250">
-              <Heart size={20} />
+            <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250">
+              <Heart
+                size={20}
+                className={`cursor-pointer transition ${favoriteCount > 0 ? "fill-red-500 text-red-500" : "text-gray-700"}`}
+                onClick={() => navigate("/favorites")}
+              />
+
+              {favoriteCount > 0 && (
+                <span className="absolute -top-3 -right-2 bg-red-500 text-white rounded-full px-1.5 text-[10px] leading-none min-w-4 h-4 flex items-center justify-center">
+                  {favoriteCount > 99 ? "99+" : favoriteCount}
+                </span>
+              )}
             </div>
             <div className="relative p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-200">
               <ShoppingBag
