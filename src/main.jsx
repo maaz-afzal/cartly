@@ -3,14 +3,14 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import CartProvider from "./context/CartContext.jsx";
-import FavoriteProvider from "./context/FavoriteContext.jsx";
+import FavoritesProvider from "./context/FavoritesContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <FavoriteProvider>
+    <FavoritesProvider>
       <CartProvider>
         <App />
       </CartProvider>
-    </FavoriteProvider>
+    </FavoritesProvider>
   </BrowserRouter>,
 );
