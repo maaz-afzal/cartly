@@ -1,12 +1,14 @@
-import { Heart, Search, ShoppingBag, Sun } from "lucide-react";
+import { Heart, Moon, Search, ShoppingBag, Sun } from "lucide-react";
 import { CartContext } from "../../context/CartContext";
 import { FavoritesContext } from "../../context/FavoritesContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Navbar = () => {
   const { getTotalItems } = useContext(CartContext);
   const { favorites } = useContext(FavoritesContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const itemCount = getTotalItems();
   const favoriteCount = favorites.length;
@@ -59,8 +61,11 @@ const Navbar = () => {
                 </span>
               )}
             </div>
-            <div className="p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250">
-              <Sun size={20} className="cursor-pointer" />
+            <div
+              className="p-2 hover:bg-[#EEE5E9] rounded-full cursor-pointer transition duration-250"
+              onClick={() => toggleTheme()}
+            >
+              {theme === "light" ? <Sun size={20} /> : <Moon size={20} />}
             </div>
 
             <button className="bg-[#256EFF] text-white px-6 py-2 rounded-full font-semibold active:scale-96 transition duration-300 cursor-pointer hover:opacity-90">
