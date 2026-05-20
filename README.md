@@ -1,16 +1,60 @@
-# React + Vite
+## Screenshots
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img width="1902" height="1066" alt="image" src="https://github.com/user-attachments/assets/ed63008c-3b20-477c-9457-fba14448f7c3" />
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Cartly 🛒
 
-## React Compiler
+A modern e-commerce frontend UI built with React and Tailwind CSS.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Live Demo
 
-## Expanding the ESLint configuration
+🔗 [cartly.vercel.app](#) *(update after deploy)*
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- 🛍️ Product listing with category filter
+- 🔍 Real-time search
+- 🛒 Cart with quantity management and localStorage persistence
+- ❤️ Favorites/wishlist with persistence
+- 🌙 Dark mode toggle
+- 📦 Product detail page
+- ⚡ Data from [Fake Store API](https://fakestoreapi.com)
+
+## Tech Stack
+
+- React 19
+- Tailwind CSS v4
+- React Router v6
+- Context API
+- Lucide React
+- Vite
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── layout/       # Navbar
+│   └── ui/           # Button, ProductCard
+├── context/          # Cart, Favorites, Theme, Search
+├── hooks/            # useFetch
+├── pages/            # Home, Cart, Favorites, ProductDetail, Login
+└── services/
+```
+
+## Getting Started
+
+```bash
+git clone https://github.com/maaz-afzal/cartly.git
+cd cartly
+npm install
+npm run dev
+```
+
+
+
+---
+
+Built by [Maaz Afzal](https://github.com/maaz-afzal)
