@@ -2,9 +2,11 @@ import { Loader } from "lucide-react";
 import Button from "../components/ui/Button";
 import ProductCard from "../components/ui/ProductCard";
 import useFetch from "../hooks/useFetch";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SearchContext } from "../context/SearchContext";
 
 const Home = () => {
+  const { search } = useContext(SearchContext);
   const { data, loading, error } = useFetch(
     "https://fakestoreapi.com/products",
   );
@@ -87,17 +89,21 @@ const Home = () => {
         {(filter === "All" || filter === ""
           ? data
           : data.filter((p) => p.category === filter)
-        ).map((product, index) => (
-          <ProductCard
-            key={index}
-            id={product.id}
-            title={product.title}
-            price={product.price}
-            image={product.image}
-            description={product.description}
-            category={product.category}
-          />
-        ))}
+        )
+          .filter((item) =>
+            item.title.toLowerCase().includes(search.toLowerCase()),
+          )
+          .map((product, index) => (
+            <ProductCard
+              key={index}
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              image={product.image}
+              description={product.description}
+              category={product.category}
+            />
+          ))}
       </section>
     </div>
   );

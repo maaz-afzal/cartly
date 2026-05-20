@@ -4,11 +4,13 @@ import { FavoritesContext } from "../../context/FavoritesContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
+import { SearchContext } from "../../context/SearchContext";
 
 const Navbar = () => {
   const { getTotalItems } = useContext(CartContext);
   const { favorites } = useContext(FavoritesContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { setSearch } = useContext(SearchContext);
   const navigate = useNavigate();
   const itemCount = getTotalItems();
   const favoriteCount = favorites.length;
@@ -31,6 +33,7 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search..."
+                onChange={(e) => setSearch(e.target.value)}
                 className="w-full rounded-full border border-gray-300 bg-white py-2 pl-10 pr-4 text-sm outline-none transition-all duration-200 focus:border-[#F0803C] focus:ring-2 focus:ring-[#F0803C]/30 placeholder:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder:text-gray-400"
               />
             </div>

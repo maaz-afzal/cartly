@@ -5,13 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import CartProvider from "./context/CartContext.jsx";
 import FavoritesProvider from "./context/FavoritesContext.jsx";
 import ThemeProvider from "./context/ThemeContext.jsx";
+import SearchProvider from "./context/SearchContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <ThemeProvider>
       <FavoritesProvider>
         <CartProvider>
-          <App />
+          <SearchProvider>
+            <App />
+          </SearchProvider>
         </CartProvider>
       </FavoritesProvider>
     </ThemeProvider>
