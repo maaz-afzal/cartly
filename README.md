@@ -8,10 +8,6 @@
 
 A modern e-commerce frontend UI built with React and Tailwind CSS.
 
-## Live Demo
-
-🔗 [https://cartly-zeta.vercel.app](#)
-
 ## Features
 
 - 🛍️ Product listing with category filter
