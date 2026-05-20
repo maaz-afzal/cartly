@@ -17,7 +17,6 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (product, quantity) => {
-    // Current cart mein existing item dhundho
     const existingItem = cart.find((item) => item.id === product.id);
 
     let newCart;
