@@ -86,14 +86,26 @@ const Home = () => {
 
       {/* product section */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-        {(filter === "All" || filter === ""
-          ? data
-          : data.filter((p) => p.category === filter)
-        )
-          .filter((item) =>
+        {(() => {
+          const filteredProducts = (
+            filter === "All" || filter === ""
+              ? data
+              : data.filter((p) => p.category === filter)
+          ).filter((item) =>
             item.title.toLowerCase().includes(search.toLowerCase()),
-          )
-          .map((product, index) => (
+          );
+
+          if (filteredProducts.length === 0) {
+            return (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-500 text-lg">
+                  No products found for search: "{search}"
+                </p>
+              </div>
+            );
+          }
+
+          return filteredProducts.map((product, index) => (
             <ProductCard
               key={index}
               id={product.id}
@@ -103,7 +115,8 @@ const Home = () => {
               description={product.description}
               category={product.category}
             />
-          ))}
+          ));
+        })()}
       </section>
     </div>
   );
