@@ -51,31 +51,36 @@ const Home = () => {
       </section>
 
       {/* filter section */}
-      <section className="mt-8 flex flex-wrap justify-between items-center">
+      <section className="mt-8 flex flex-col md:flex-row md:justify-between md:items-center gap-3">
         <h2 className="text-2xl font-serif font-bold dark:text-white">
           Featured Products
         </h2>
-        <div className="flex gap-2">
+
+        <div className="flex flex-nowrap md:flex-wrap gap-2 overflow-x-auto pb-2 md:pb-0">
           <Button
             label="All"
-            isActive={filter === "All" || filter === "" ? true : false}
+            isActive={filter === "All" || filter === ""}
             onClick={() => handleFilter("All")}
           />
+
           <Button
             label="Electronics"
             isActive={filter === "electronics"}
             onClick={() => handleFilter("electronics")}
           />
+
           <Button
             label="Jewelery"
             isActive={filter === "jewelery"}
             onClick={() => handleFilter("jewelery")}
           />
+
           <Button
-            label=" Men Clothing"
+            label="Men Clothing"
             isActive={filter === "men's clothing"}
             onClick={() => handleFilter("men's clothing")}
           />
+
           <Button
             label="Women Clothing"
             isActive={filter === "women's clothing"}
